@@ -139,12 +139,23 @@ profile : [my dacon profile page](https://dacon.io/myprofile/497780/home), [my k
 
 - ### 실험 결과 
   1.  **Baseline과 RWM 적용 후 및 가중치 모드 별 Test 성능**
+     
      - 본 논문의 제안 기법인 Multiple Learnable 가중치는 Baseline 대비 최대 7.94%의 ACER 개선을 이끌어냈으며, AUC 역시 87.91%에서 90.90%로 증가하는 성능 향상이 나타났습니다. 
      
      <img width="661" height="193" alt="image" src="https://github.com/user-attachments/assets/d756ae27-f75d-4e4a-b0d1-3bb8ff5a5e17" />
 
-  2.  **연산 효율성 및 실시간 추론 적용**: 랜드마크 조회와 weight map 생성 연산을 포함하더라도 RWM의 평균 추론시간은 약 12.01 ms로, 실시간·저지연 환경에서도 적용 가능함을 보였습니다.
-  3.  **설명 가능성(Explainability) 제고**: RWM이 학습하는 패치별 가중치(heatmap)를 통해 모델이 어느 얼굴 부위를 근거로 판별했는지 시각적으로 확인할 수 있습니다. 이는 딥페이크 판정의 근거를 제공해 포렌식 분석·디버깅·사용자 신뢰 확보에 도움을 주며, 규제·컴플라이언스 대응이나 결과 해석이 필요한 실제 서비스 환경에서 중요한 장점이 됩니다
+  2.  **5-point 랜드마크 세트와 Full-point 랜드마크 세트의 성능 비교**
+     
+    - 양쪽 눈 동공, 코끝, 입술 양끝의 5개 대표 지점을 담은 5-point set와  부위의 모든 세부 지점을 포함한 Full-point 랜드마크 세트를 비교할 경우, Full-point 랜드마크 세트가 5-point 랜드마크 세트보다 더 높은 성능을 보였습니다. 이는 세분화된 포인트들이 눈·코·입 부위의 미세한 합성 흔적을 더욱 정밀하게 포착하기 때문으로 해석할 수 있습니다.
+
+    <img width="655" height="238" alt="image" src="https://github.com/user-attachments/assets/adf2052c-e792-4edc-94de-6d93e0a6071e" />
+
+  3.  **RWM 추론 비용 비교**
+  
+    - RWM의 평균 추론 시간은 CBAM 대비 0.47ms(-3.91%) 더 낮았는데, 랜드마크 조회 시간과 weight map 생성·적용이라는 추가 연산을 포함하고도 RWM은 CBAM보다 오히려 더 낮은 평균 추론 시간을 달성하여, 효율적인 연산 비용을 가졌음을 증명하였습니다. 
+ 
+    <img width="648" height="131" alt="image" src="https://github.com/user-attachments/assets/9e436fd1-9ad0-44c3-819e-63bafd5376d3" />
+
      
 - ### 기대 효과
   1.  **딥페이크 탐지 성능 향상**: 딥페이크는 전체 얼굴이 아닌 눈·코·입 주변에서 미세한 합성 왜곡이 주로 발생하므로, 전역적 패치 처리만 하는 기존 ViT 구조는 이러한 미세 징후를 약하게 학습합니다. 해당 기법을 통해 이러한 단점을 보완하여 더욱 강건한 딥페이크 탐지가 가능합니다. 

@@ -162,7 +162,7 @@ profile : [my dacon profile page](https://dacon.io/myprofile/497780/home), [my k
   2.  **연산 효율성 및 실시간 추론 적용**: 랜드마크 조회와 weight map 생성 연산을 포함하더라도 RWM의 평균 추론시간은 약 12.01 ms로, 실시간·저지연 환경에서도 적용 가능함을 보였습니다.
   3.  **설명 가능성(Explainability) 제고**: RWM이 학습하는 패치별 가중치(heatmap)를 통해 모델이 어느 얼굴 부위를 근거로 판별했는지 시각적으로 확인할 수 있습니다. 이는 딥페이크 판정의 근거를 제공해 포렌식 분석·디버깅·사용자 신뢰 확보에 도움을 주며, 규제·컴플라이언스 대응이나 결과 해석이 필요한 실제 서비스 환경에서 중요한 장점이 됩니다.
  
-<img width="594" height="249" alt="image" src="https://github.com/user-attachments/assets/115c59cf-ae2e-4aa4-8dd7-a52d53fbb396" />
+  <img width="594" height="249" alt="image" src="https://github.com/user-attachments/assets/115c59cf-ae2e-4aa4-8dd7-a52d53fbb396" />
 
 
 ## 개발환경

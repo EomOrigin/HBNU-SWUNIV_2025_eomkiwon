@@ -105,7 +105,7 @@ profile : [my dacon profile page](https://dacon.io/myprofile/497780/home), [my k
 
 
   # 한밭대학교 컴퓨터공학과 2025 포트폴리오경진대회
-# 국립한밭대학교 컴퓨터공학과 20231203 엄기원
+## 국립한밭대학교 컴퓨터공학과 20231203 엄기원
 
 ## 주제 
 - 눈·코·입 영역 강조 가중치를 활용한 ViT 기반 딥페이크 탐지 기법 연구
@@ -121,6 +121,9 @@ profile : [my dacon profile page](https://dacon.io/myprofile/497780/home), [my k
   - 최근 딥페이크 기술의 고도화와 함께 피해를 목적으로 한 딥페이크 범죄(사칭, 금전적 사기, 명예훼손 등) 가 증가하고 있어, 단순 감시·탐지 수준을 넘어 실사용자 보호를 목표로 한 예방적·실시간 대응 기술의 도입이 시급합니다. 본 연구의 RWM 기반 딥페이크 탐지 기법은 이러한 위협에 대해 현장 적용 가능한 실시간 검증 도구로 활용될 잠재력이 높습니다.
     
 ## 프로젝트 내용
+
+<img width="504" height="250" alt="image" src="https://github.com/user-attachments/assets/f9043ce0-699a-436d-aff5-6b0bc7a6c7a5" />
+
  - ### 구현 내용
   1.  **데이터 파이프라인 & 전처리**
       -   FaceForensics++ 등 공개 딥페이크 데이터셋을 수집하고, 학습/검증/테스트 split을 구성
@@ -133,18 +136,27 @@ profile : [my dacon profile page](https://dacon.io/myprofile/497780/home), [my k
   3.  **최종 모델 구조**
       -   ViTWithRegionBias 클래스가 timm의 vit_small_patch16_224를 불러와 RegionAttention을 생성하고 패치 임베딩 단계 직후에 weight_map을 적용 
 
+- ### 실험 결과 
+  1.  **Baseline과 RWM 적용 후 및 가중치 모드 별 Test 성능**
+     - 본 논문의 제안 기법인 Multiple Learnable 가중치는 Baseline 대비 최대 7.94%의 ACER 개선을 이끌어냈으며, AUC 역시 87.91%에서 90.90%로 증가하는 성능 향상이 나타났습니다. 
+     
+     <img width="661" height="193" alt="image" src="https://github.com/user-attachments/assets/d756ae27-f75d-4e4a-b0d1-3bb8ff5a5e17" />
+
+  2.  **연산 효율성 및 실시간 추론 적용**: 랜드마크 조회와 weight map 생성 연산을 포함하더라도 RWM의 평균 추론시간은 약 12.01 ms로, 실시간·저지연 환경에서도 적용 가능함을 보였습니다.
+  3.  **설명 가능성(Explainability) 제고**: RWM이 학습하는 패치별 가중치(heatmap)를 통해 모델이 어느 얼굴 부위를 근거로 판별했는지 시각적으로 확인할 수 있습니다. 이는 딥페이크 판정의 근거를 제공해 포렌식 분석·디버깅·사용자 신뢰 확보에 도움을 주며, 규제·컴플라이언스 대응이나 결과 해석이 필요한 실제 서비스 환경에서 중요한 장점이 됩니다
+     
 - ### 기대 효과
   1.  **딥페이크 탐지 성능 향상**: 딥페이크는 전체 얼굴이 아닌 눈·코·입 주변에서 미세한 합성 왜곡이 주로 발생하므로, 전역적 패치 처리만 하는 기존 ViT 구조는 이러한 미세 징후를 약하게 학습합니다. 해당 기법을 통해 이러한 단점을 보완하여 더욱 강건한 딥페이크 탐지가 가능합니다. 
   2.  **연산 효율성 및 실시간 추론 적용**: 랜드마크 조회와 weight map 생성 연산을 포함하더라도 RWM의 평균 추론시간은 약 12.01 ms로, 실시간·저지연 환경에서도 적용 가능함을 보였습니다.
-  3.  **설명 가능성(Explainability) 제고**: RWM이 학습하는 패치별 가중치(heatmap)를 통해 모델이 어느 얼굴 부위를 근거로 판별했는지 시각적으로 확인할 수 있습니다. 이는 딥페이크 판정의 근거를 제공해 포렌식 분석·디버깅·사용자 신뢰 확보에 도움을 주며, 규제·컴플라이언스 대응이나 결과 해석이 필요한 실제 서비스 환경에서 중요한 장점이 됩니다
+  3.  **설명 가능성(Explainability) 제고**: RWM이 학습하는 패치별 가중치(heatmap)를 통해 모델이 어느 얼굴 부위를 근거로 판별했는지 시각적으로 확인할 수 있습니다. 이는 딥페이크 판정의 근거를 제공해 포렌식 분석·디버깅·사용자 신뢰 확보에 도움을 주며, 규제·컴플라이언스 대응이나 결과 해석이 필요한 실제 서비스 환경에서 중요한 장점이 됩니다.
 
 ## 개발환경
 - ### 개발 언어 :
   - Python
 - ### 프레임워크 및 라이브러리 :
-  - Flask, zxing-cpp, Pillow, requests, python-dotenv
+  - PyTorch, torchvision, timm, MediaPipe, OpenCV, einops, numpy, pandas, albumentations, matplotlib, wandb
 - ### API 및 협업 도구 :
-  - Google Safe Browsing API, Git, GitHub, WSL(Ubuntu)
+  - Git, GitHub, Docker, nvidia-docker (nvidia-container-toolkit), WSL (Ubuntu), CUDA
  
 
 [![KiwonEom's github stats](https://github-readme-stats.vercel.app/api?username=EomOrigin&show_icons=true&theme=tokyonight)](https://github.com/EomOrigin)

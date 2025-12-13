@@ -59,29 +59,3 @@
   <img width="594" height="249" alt="image" src="https://github.com/user-attachments/assets/115c59cf-ae2e-4aa4-8dd7-a52d53fbb396" />
 
 
-## 개발환경
-- ### 개발 언어 :
-  - Python
-- ### 프레임워크 및 라이브러리 :
-  - PyTorch, torchvision, timm, MediaPipe, OpenCV, einops, numpy, pandas, albumentations, matplotlib, wandb
-- ### API 및 협업 도구 :
-  - Git, GitHub, Docker, nvidia-docker (nvidia-container-toolkit), WSL (Ubuntu), CUDA
- 
-
-[![KiwonEom's github stats](https://github-readme-stats.vercel.app/api?username=EomOrigin&show_icons=true&theme=tokyonight)](https://github.com/EomOrigin)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=EomOrigin&layout=compact&theme=tokyonight)
-
-
-  <!--
-
-
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
